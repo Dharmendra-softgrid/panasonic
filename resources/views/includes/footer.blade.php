@@ -1,10 +1,10 @@
 <footer class="footer_sec">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 footer-logo">
                 <div class="ftr_logo">
-                    <a href="">
-                        <img src="assets/images/logo.png" alt="logo">
+                    <a href="{{ url('/') }}">
+                        <img src="{{asset('/')}}images/logo.png" alt="logo">
                     </a>
                 </div>
                 <div class="footer_social">
@@ -29,67 +29,54 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-2">
+            <div class="col-12 col-md-2 footer_col">
                 <div class="ftr_title">
                     <h3>Solutions</h3>
                 </div>
                 <ul class="footer_menu_main justify-content-md-between">
-                    <li class="col-auto">
-                        <a href="">Display Solutions</a>
-                    </li>
-                    <li class="col-auto">
-                        <a href="">Projectors</a>
-                    </li>
-                    <li class="col-auto">
-                        <a href="">Broadcast & professional AV</a>
-                    </li>
+                    @if($menus->isNotEmpty())
+                        @foreach($menus as $i=>$nr)
+                            @if($nr->parent == 0)
+                                <li class="col-auto" style="text-transform: lowercase;">
+                                    <a href="{{route('displaysolutions', ['slug' => $nr->displaySolution->slug])}}">{{$nr->title}}</a>
+                                </li>
+                            @endif
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 
-            <div class="col-12 col-md-2">
+            <div class="col-12 col-md-2 footer_col">
                 <div class="ftr_title">
                     <h3>Industries</h3>
                 </div>
                 <ul class="footer_menu_main justify-content-md-between">
+                    @foreach($industries as $i)
                     <li class="col-auto">
-                        <a href="">Retail Industry</a>
+                        <a href="{{route('industry', ['slug' => $i->slug])}}">{{$i->title}}</a>
                     </li>
-                    <li class="col-auto">
-                        <a href="">QSR Industry</a>
-                    </li>
-                    <li class="col-auto">
-                        <a href="">Meeting Room</a>
-                    </li>
-                    <li class="col-auto">
-                        <a href="">Hospitality</a>
-                    </li>
-                    <li class="col-auto">
-                        <a href="">Airports/ Railways</a>
-                    </li>
-                    <li class="col-auto">
-                        <a href="">Education Institutions</a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
 
-            <div class="col-12 col-md-2 ">
+            <div class="col-12 col-md-2 footer_col">
                 <div class="ftr_title">
                     <h3>Other Links</h3>
                 </div>
                 <ul class="footer_menu_main justify-content-md-between">
                     <li class="col-auto">
-                        <a href="">About Us</a>
+                        <a href="{{route('aboutus')}}">About Us</a>
                     </li>
                     <li class="col-auto">
-                        <a href="">Newsroom</a>
+                        <a href="{{route('newsroom')}}">Blogs & News</a>
                     </li>
                     <li class="col-auto">
-                        <a href="">Case studies</a>
+                        <a href="{{route('case-study')}}">Case studies</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-12 col-md-3 contact_us">
+            <div class="col-12 col-md-3 contact_us footer_col">
                 <div class="ftr_title">
                     <h3>Contact Us</h3>
                 </div>

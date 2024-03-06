@@ -48,7 +48,7 @@
                   @if($industries->isNotEmpty())
                     @foreach($industries as $i=>$industry)
                       <tr>
-                        <th scope="row">{{$industry->id}}</th>
+                        <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$industry->title}}</td>                        
                         <td>
                           <button title="delete" type="button" class="btn btn-danger btn-sm deletebtn" data-id="{{$industry->id}}"><i class="bi bi-trash"></i></button>

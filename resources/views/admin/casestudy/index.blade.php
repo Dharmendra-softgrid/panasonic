@@ -1,6 +1,16 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<style>
+  img.slide-img {
+    width: 200px;
+  }
+  .casestudy_img{
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+    }
+  </style>
 <div class="pagetitle">
       <h1>Case Studies</h1>
       <nav>
@@ -40,8 +50,7 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Pdf</th>
-                    <th scope="col">Video</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -50,14 +59,22 @@
                   @if($casestudies->isNotEmpty())
                     @foreach($casestudies as $i=>$cd)
                       <tr>
-                        <th scope="row">{{$cd->id}}</th>
-                        <td>{{$cd->name}}</td>                        
-                        <td>@if(!empty($cd->filename))<a href="{{asset('casestudy/'.$cd->filename)}}" download="{{$cd->filename}}" target="_blank">{{$cd->filename}}</a>@endif</td>                        
-                        <td>@if(!empty($cd->video))<a href="{{$cd->video}}" target="_blank">{{$cd->video}}</a>@endif</td>                        
+                        <th scope="row">{{$loop->iteration}}</th>
+                        <td>{{$cd->title}}</td> 
+                        <?php $pimage= "productDefault.png";
+                          if(!empty($cd->image)){
+                            $pimage = $cd->image;
+                          }
+                         ?>
+                        <td>
+                          <div class="image-holder">
+                            <img src="{{asset('images/'.$pimage)}}" class="casestudy_img">
+                          </div>
+                        </td>                       
                         <td>
                           <button title="delete" type="button" class="btn btn-danger btn-sm deletebtn" data-id="{{$cd->id}}"><i class="bi bi-trash"></i></button>
 
-                          <!-- <a title="edit" href="{{route('casestudy.edit',['id'=>$cd->id])}}" class="btn btn-primary btn-sm " data-id="{{$cd->id}}"><i class="bi bi-pencil"></i></a> -->
+                          <a title="edit" href="{{route('casestudy.edit',['id'=>$cd->id])}}" class="btn btn-primary btn-sm " data-id="{{$cd->id}}"><i class="bi bi-pencil"></i></a> 
                           
                         </td>
                       </tr>

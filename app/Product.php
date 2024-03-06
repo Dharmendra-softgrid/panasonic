@@ -9,7 +9,7 @@ use App\ProductCategory;
 use App\ProductVideos;
 use App\ProductSpecifications;
 use App\ProductBlog;
-
+use App\ProductOtherSpecification;
 
 class Product extends Model
 {
@@ -72,7 +72,12 @@ class Product extends Model
     public function industries() {
         return $this->belongsToMany('App\Industries','product_industry_map','product_id','industry_id')->as('industries');
     }
-
+    public function productVariant() {
+      return $this->hasMany(ProductVariant::class);
+    }
+    public function ProductOtherSpecification() {
+      return $this->hasMany(ProductOtherSpecification::class);
+    }
     
     
     

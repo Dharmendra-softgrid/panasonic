@@ -51,8 +51,8 @@
                   <tr>
                     <th scope="col">Image</th>
                     <th scope="col">Product</th>                    
-                    <th scope="col">Category</th>                    
-                    <th scope="col">Industry</th>                    
+                    <!-- <th scope="col">Category</th>                    
+                    <th scope="col">Industry</th>                     -->
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -62,21 +62,21 @@
                     @foreach($products as $i=>$pc)
                       <tr>
                         <?php $pimage= "productDefault.png";
-                          if(!empty($pc->product_images)){
-                            $pimage = $pc->product_images->first()->image;
+                          if(!empty($pc->featured_image)){
+                            $pimage = $pc->featured_image;
                           }
                          ?>
-                        <td width="8%">
+                        <td>
                           <div class="image-holder">
-                            <img src="{{asset('images/product/'.$pimage)}}" class="product_img">
+                            <img src="{{asset('images/'.$pimage)}}" class="product_img">
                           </div>
                           
                         </td>
                         <td >{{$pc->title}}</td>
-                        <td >{{count($pc->product_categories) > 0 ? $pc->product_categories->implode('title', ',') : '' }}</td>
-                        <td >{{count($pc->industries) > 0 ? $pc->industries->implode('title', ',') : '' }}</td>
+                        <!-- <td >{{count($pc->product_categories) > 0 ? $pc->product_categories->implode('title', ',') : '' }}</td>
+                        <td >{{count($pc->industries) > 0 ? $pc->industries->implode('title', ',') : '' }}</td> -->
                         
-                        <td width="8%">
+                        <td>
                           <button title="delete" type="button" class="btn btn-danger btn-sm deletebtn" data-id="{{$pc->id}}"><i class="bi bi-trash"></i></button>
 
                           <a title="edit" href="{{route('product.edit',['id'=>$pc->id])}}" class="btn btn-primary btn-sm " data-id="{{$pc->id}}"><i class="bi bi-pencil"></i></a>

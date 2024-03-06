@@ -3,22 +3,20 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{asset('/')}}css/bootstrap.min.css" >
-        <link rel="stylesheet" href="{{asset('/')}}css/fontawesome-all.min.css" >
-        <link rel="stylesheet" href="{{asset('/')}}css/slick.css">
-        <link rel="stylesheet" href="{{asset('/')}}css/custom.css">
-        <link rel="stylesheet" href="{{asset('/')}}css/responsive.css">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" >
+        <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}" >
+        <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+        <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+        <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
         <title>Panasonic</title>
-
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <!-- <script src="assets/js/jquery-3.2.1.min.js" ></script> -->
-
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script src="{{asset('/')}}js/bootstrap.bundle.min.js"></script>
-        <script src="{{asset('/')}}js/fontawesome-all.min.js"></script>
-        <script src="{{asset('/')}}js/slick.min.js"></script>
-        <script src="{{asset('/')}}js/wow.min.js"></script>
-        <script src="{{asset('/')}}js/script_custom.js"></script>
+        <!-- Option 1: Bootstrap Bundle with Popper -->        
+        <script src="{{asset('/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('js/fontawesome-all.min.js')}}"></script>
+        <script src="{{asset('js/slick.min.js')}}"></script>
+        <script src="{{asset('js/wow.min.js')}}"></script>
+        <script src="{{asset('js/script_custom.js')}}"></script>
     </head>
     <body>
 

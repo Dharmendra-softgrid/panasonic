@@ -16,7 +16,15 @@ use App\Newsroom;
 
 
 
-
+/*
+|--------------------------------------------------------------------------
+| HomeController
+|--------------------------------------------------------------------------
+| Author : Dharmendra Upadhyay
+| Last Commited :28/02/2024
+| Controller for creating, updating, fetching, and deleting home page data for the application..
+|
+*/
 class HomeController extends Controller
 {
     public function index() {

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-
+use App\DisplaySolution;
 class Menu extends Model
 {
     
@@ -16,7 +16,7 @@ class Menu extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'link', 'type','parent','menu_type'
+        'id','title', 'link', 'type','parent','menu_type','slug','menu_id','slug'
     ];
 
     /**
@@ -46,5 +46,8 @@ class Menu extends Model
     public function children() {
         return $this->hasMany(static::class, 'parent');
       }
-
+    public function displaySolution()
+    {
+        return $this->hasOne(DisplaySolution::class, 'menu_id');
+    }
 }

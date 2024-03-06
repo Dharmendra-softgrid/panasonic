@@ -8,14 +8,27 @@
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('admin.header.menu')}}">
+                <i class="bi bi-grid"></i>
+                <span>Solution Menu</span>
+            </a>
+        </li>
+        <!-- End Dashboard Nav -->
 
-        <!-- <li class="nav-item">
+        <li class="nav-item">
+            <a class="nav-link collapsed"   href="{{route('casestudy.index')}}">
+                <i class="bi bi-newspaper"></i><span>Case Studies</span>
+            </a>
+        </li>  
+
+         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('page.index')}}">
                 <i class="bi bi-card-text"></i>
                 <span>Pages</span>
                 </a>
-        </li> -->
+        </li> 
 
         <!-- <li class="nav-item">
             <a class="nav-link collapsed"  data-bs-target="#header-nav" data-bs-toggle="collapse" href="#">
@@ -89,12 +102,51 @@
             </ul>
         </li> --><!-- End Forms Nav -->
 
-        <!-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link collapsed"  href="{{route('industry.index')}}">
                 <i class="bi bi-building"></i><span>Industry</span></i>
             </a>
-        </li> --><!-- End Tables Nav -->
-
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('successstory.index')}}">
+                <i class="bi bi-building"></i><span>Success Story</span></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('newsroom.index')}}">
+                <i class="bi bi-building"></i><span>Newsroom</span></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('displaysolution.index')}}">
+                <i class="bi bi-building"></i><span>Solution</span></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('professionalDisplay.index')}}">
+                <i class="bi bi-building"></i><span>Professional Display Solution</span></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('product.index')}}">
+                <i class="bi bi-building"></i><span>Products</span></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('slider.index')}}">
+                <i class="bi bi-building"></i><span>Slider</span></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('content.index')}}">
+                <i class="bi bi-building"></i><span>Content</span></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed"  href="{{route('industryBlog.index')}}">
+                <i class="bi bi-building"></i><span>Industry Blog</span></i>
+            </a>
+        </li>
         <!-- <li class="nav-item">
             <a class="nav-link collapsed"   data-bs-target="#home-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-briefcase"></i><span>Home</span><i class="bi bi-chevron-down ms-auto"></i>

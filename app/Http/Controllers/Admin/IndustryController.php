@@ -11,7 +11,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-
+/*
+|--------------------------------------------------------------------------
+| IndustryController
+|--------------------------------------------------------------------------
+| Author : Dharmendra Upadhyay
+| Last Commited :28/02/2024
+| Controller for creating, updating, fetching, and deleting industry data for the application..
+|
+*/
 class IndustryController extends Controller
 {
     public function index() {
@@ -31,16 +39,17 @@ class IndustryController extends Controller
     public function store(Request $request) {
         //dd($request->file('bannerimage'));
         $messages = array(
-            'images.required' => 'Atleast 1 image required',
+            //'images.required' => 'Atleast 1 image required',
         );
         
         $rules=[
             'title' => 'required|max:255',
             'content' => 'required',
-            'images' => 'required|array|min:1',         
+            //'bannerimage' => 'required'
+            //'images' => 'required|array|min:1',         
         ];
         if($request->file('bannerimage')){
-            $rules['bannerimage'] = 'mimes:jpeg,png,jpg,gif|max:2048';
+            $rules['bannerimage'] = 'mimes:jpeg,png,jpg,gif,svg|max:2048';
         }
         $validated = $request->validate($rules,$messages);
 
@@ -69,6 +78,7 @@ class IndustryController extends Controller
         $industry->meta_keywords = $request->meta_keywords;
         $industry->meta_description = $request->meta_description;
         $industry->content = $request->content;
+        $industry->active = '1';
         $industry->save();
 
         if(!empty($request->id)){

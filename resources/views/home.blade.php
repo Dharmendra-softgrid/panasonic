@@ -5,14 +5,18 @@
 <section class="top_banner">
   	<div class="home_banner_sec">
       	<div class="slide_item">
-          	<div class="banner_img">
-            	<img src="{{asset('/')}}images/home_top_banner.jpg">
-          	</div>
-          	<div class="container">
-             	<div class="banner_caption">
-              		<h3>DESIGN FOR THE BETTER WORLD FOR BETTER DIGITAL DISPLAY.</h3>
-             	</div>
-        	</div>
+		  	@if($sliders->isNotEmpty())
+            	@foreach($sliders as $i=>$slider)
+				<div class="banner_img">
+					<img src="{{asset(isset($slider->image) ? 'images/'.$slider->image : 'images/computerbanner.jpg')}}">
+				</div>
+				<div class="container">
+					<div class="banner_caption">
+						<h3>{{$slider->slide_title}}</h3>
+					</div>
+				</div>
+				@endforeach
+			@endif
     	</div>
 	</div>
 </section>
@@ -20,12 +24,12 @@
 <section class="solution_sec sec_padd">
 	<div class="container">
 		<div class="head_cmn text-center">
-			<h2 class="head_2">THE SOLUTION FOR ALL YOUR DISPLAY NEEDS</h2>
+			<h2 class="head_2">{{$first_sec_content->title}}</h2>
 		</div>
 		<div class="row">
 			<div class="col-md-10 mx-auto">
 				<div class="sec_p text-center">
-					<p>Panasonic’s Digital Signage Solution ecosystem includes hardware, software, and services that work holistically together to provide the right-sized display for any scenario. Our exceptional solutions combine the highest quality high-definition (HD) and 4K professional displays, interactive technologies and network-based multimedia content into dynamic systems that work for your business.</p>
+					<p>{{strip_tags($first_sec_content->content)}}</p>
 				</div>
 			</div>
 		</div>
@@ -35,116 +39,27 @@
 <section class="home_about_sec sec_padd gray-bg">
 	<div class="container">
 		<div class="head_cmn text-center">
-			<h2 class="head_2">END-TO-END DISPLAY SOLUTIONS</h2>
+			<h2 class="head_2">{{$second_sec_content->title}}</h2>
 		</div>
 
 		<div class="row">
+		@if($displaysolutions->isNotEmpty())
+            @foreach($displaysolutions as $i=>$displaysolution)
 			<div class="col-12 col-lg-3">
 				<div class="solution_item">
 					<figure>
-						<img src="{{asset('/')}}images/solution-1.jpg" alt="blog img">
+						<img src="{{asset(isset($displaysolution->image) ? 'images/'.$displaysolution->image : 'images/computerbanner.jpg')}}" alt="blog img">
 					</figure>
 					<div class="item_body">
 
 						<div class="body-link">
-							<a href="#" class="link">Standard Display<span class="arrow-right"></span></a>
+							<a href="#" class="link">{{$displaysolution->title}}<span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="col-12 col-lg-3">
-				<div class="solution_item">
-					<figure>
-						<img src="{{asset('/')}}images/solution-2.jpg" alt="blog img">
-					</figure>
-					<div class="item_body">
-						<div class="body-link">
-							<a href="#" class="link">Professional Display <span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-3">
-				<div class="solution_item">
-					<figure>
-						<img src="{{asset('/')}}images/solution-2.jpg" alt="blog img">
-					</figure>
-					<div class="item_body">
-						<div class="body-link">
-							<a href="#" class="link">Interactive Touch Screen <span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-12 col-lg-3">
-				<div class="solution_item">
-					<figure>
-						<img src="{{asset('/')}}images/solution-4.jpg" alt="blog img">
-					</figure>
-					<div class="item_body">
-						<div class="body-link">
-							<a href="#" class="link">Indoor LED Signage <span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-3">
-				<div class="solution_item">
-					<figure>
-						<img src="{{asset('/')}}images/solution-5.jpg" alt="blog img">
-					</figure>
-					<div class="item_body">
-						<div class="body-link">
-							<a href="#" class="link">Electronic Labels <span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-3">
-				<div class="solution_item">
-					<figure>
-						<img src="{{asset('/')}}images/solution-6.jpg" alt="blog img">
-					</figure>
-					<div class="item_body">
-						<div class="body-link">
-							<a href="#" class="link">Meeting Room Management<span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-3">
-				<div class="solution_item">
-					<figure>
-						<img src="{{asset('/')}}images/solution-7.jpg" alt="blog img">
-					</figure>
-					<div class="item_body">
-						<div class="body-link">
-							<a href="#" class="link">Projectors<span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-12 col-lg-3">
-				<div class="solution_item">
-					<figure>
-						<img src="{{asset('/')}}images/solution-8.jpg" alt="blog img">
-					</figure>
-					<div class="item_body">
-						<div class="body-link">
-							<a href="#" class="link">Broadcast Solutions <span class="arrow-right"><img src="{{asset('/')}}images/Icon-arrow-right.svg"></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
+			@endforeach
+		@endif			
 		</div>
 	</div>
 </section>
@@ -153,8 +68,8 @@
 	<div class="container">
 
 		<div class="head_cmn text-center white-text">
-			<h2 class="head_2">OUR DISPLAY, YOUR INDUSTRY</h2>
-			<p>Check out which offerings from our digital signage solution best serve your business’s existing or upcoming needs.</p>
+			<h2 class="head_2">{{$third_sec_content->title}}</h2>
+			<p>{{strip_tags($third_sec_content->content)}}</p>
 		</div>
 
 		<div class="row align-items-center">
@@ -162,71 +77,30 @@
 			<div class="industry_banner banner-content clearfix">
 				<div class="banner-slider">
 					<div class="slider slider-for">
-						<div class="slider-banner-image">
-							<img src="{{asset('/')}}images/business-slide.jpg" alt="industry img">
-							<div class="industry_caption">
-								<h3>Product AV</h3>
-							</div>
-						</div> 
 
+					@if($products->isNotEmpty())
+            			@foreach($products as $i=>$product)
 						<div class="slider-banner-image">
-							<img src="{{asset('/')}}images/business-slide2.jpg" alt="industry img">
+							<img src="{{asset(isset($product->featured_image) ? 'images/'.$product->featured_image : 'images/computerbanner.jpg')}}" alt="industry img">
 							<div class="industry_caption">
-								<h3>Product AV</h3>
-							</div>
-						</div> 
-
-						<div class="slider-banner-image">
-							<img src="{{asset('/')}}images/business-slide3.jpg" alt="industry img">
-							<div class="industry_caption">
-								<h3>Product AV</h3>
-							</div>
-						</div> 
-
-						<div class="slider-banner-image">
-							<img src="{{asset('/')}}images/business-slide.jpg" alt="industry img">
-							<div class="industry_caption">
-								<h3>Product AV</h3>
+								<h3>{{$product->title}}</h3>
 							</div>
 						</div>
-
-						<div class="slider-banner-image">
-							<img src="{{asset('/')}}images/business-slide.jpg" alt="industry img">
-							<div class="industry_caption">
-								<h3>Product AV</h3>
-							</div>
-						</div> 
+						@endforeach
+					@endif
 					</div>
 
 					<div class="slider slider-nav thumb-image industry_banner_thumb">
-
+					@if($products->isNotEmpty())
+            			@foreach($products as $i=>$product)
 						<div class="thumbnail-image">
 							<div class="thumbImg">
-								<img src="{{asset('/')}}images/thumbnail-1.png" alt="industry img">
+								<img src="{{asset(isset($product->featured_image) ? 'images/'.$product->featured_image : 'images/computerbanner.jpg')}}" alt="industry img">
 							</div>
-							<h4>Product AV</h4>
+							<h4>{{$product->title}}</h4>
 						</div>
-
-						<div class="thumbnail-image">
-							<div class="thumbImg">
-								<img src="{{asset('/')}}images/thumbnail-1.png" alt="industry img">
-							</div>
-							<h4>Product AV</h4>
-						</div>
-
-						<div class="thumbnail-image">
-							<div class="thumbImg">
-								<img src="{{asset('/')}}images/thumbnail-1.png" alt="industry img">
-							</div>
-							<h4>Product AV</h4>
-						</div>
-
-						<div class="thumbnail-image">
-							<div class="thumbImg">
-								<img src="{{asset('/')}}images/thumbnail-1.png" alt="industry img">
-							</div>
-							<h4>Product AV</h4>
-						</div>
+						@endforeach
+					@endif						
 					</div>
 				</div>
 			</div>
@@ -238,51 +112,20 @@
 <section class="industry_service sec_padd">
 	<div class="container">
 		<div class="head_cmn text-center">
-			<h2 class="head_2">INDUSTRIES SERVES</h2>
+			<h2 class="head_2">{{$fourth_sec_content->title}}</h2>
 		</div>
-
+		<?php //echo"<pre>";print_r($industries);echo"</pre>";?>
 		<div class="row align-items-center">
+		@if($industries->isNotEmpty())
+            @foreach($industries as $i=>$industry)
 			<div class="col-md-4">
 				<div class="industry_service_block">
-					<div class="icon"><img src="{{asset('/')}}images/icon-1.svg"></div>
-					<h4>Retail Industry</h4>
+					<div class="icon"><img src="{{asset(isset($industry->banner_image) ? 'images/'.$industry->banner_image : 'images/computerbanner.jpg')}}"></div>
+					<h4>{{$industry->title}}</h4>
 				</div>
 			</div>
-
-			<div class="col-md-4">
-				<div class="industry_service_block">
-					<div class="icon"><img src="{{asset('/')}}images/icon-2.svg"></div>
-					<h4>QSR Industry</h4>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="industry_service_block">
-					<div class="icon"><img src="{{asset('/')}}images/icon-3.svg"></div>
-					<h4>Meeting Room</h4>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="industry_service_block">
-					<div class="icon"><img src="{{asset('/')}}images/icon-4.svg"></div>
-					<h4>Hospitality</h4>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="industry_service_block">
-					<div class="icon"><img src="{{asset('/')}}images/icon-5.svg"></div>
-					<h4>Airports/ Railways</h4>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="industry_service_block">
-					<div class="icon"><img src="{{asset('/')}}images/icon-6.svg"></div>
-					<h4>Education Institutions</h4>
-				</div>
-			</div>
+			@endforeach
+		@endif			
 		</div>
 	</div>
 </section>
@@ -290,81 +133,28 @@
 <section class="case_studies sec_padd gray-bg Success_stories">
 	<div class="container">
 		<div class="head_cmn text-center">
-			<h2 class="head_2">SUCCESS STORIES</h2>
-			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata</p>
+			<h2 class="head_2">{{$fifth_sec_content->title}}</h2>
+			<p>{{strip_tags($fifth_sec_content->content)}}</p>
 		</div>
 
-		<div class="case_studies_slider">
-
+		<div class="case_studies_slider">		
+		@if($successstories->isNotEmpty())
+            @foreach($successstories as $i=>$successstory)
 			<div class="product_slide">
 				<div class="product_item">
 					<figure>
-						<img src="{{asset('/')}}images/stories-img-1.jpg" alt="case studies">
+						<img src="{{asset(isset($successstory->banner_image) ? 'images/'.$successstory->banner_image : 'images/computerbanner.jpg')}}" alt="case studies">
 					</figure>
 					<div class="item_body">
-						<h4>New sustainable logistics headquar ters Rhenus in tilburg optimally secured - Nederland</h4>
+						<h4>{{$successstory->title}}</h4>
 						<div class="read-more-link text-start">
-							<a href="#">Read More</a>
+							<a href="{{ url('success-story/'.$successstory->slug) }}">Read More</a>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="product_slide">
-				<div class="product_item">
-					<figure>
-						<img src="{{asset('/')}}images/stories-img-2.jpg" alt="case studies">
-					</figure>
-					<div class="item_body">
-						<h4>New sustainable logistics headquar ters Rhenus in tilburg optimally secured - Nederland</h4>
-						<div class="read-more-link text-start">
-							<a href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="product_slide">
-				<div class="product_item">
-					<figure>
-						<img src="{{asset('/')}}images/stories-img-1.jpg" alt="case studies">
-					</figure>
-					<div class="item_body">
-						<h4>New sustainable logistics headquar ters Rhenus in tilburg optimally secured - Nederland</h4>
-						<div class="read-more-link text-start">
-							<a href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="product_slide">
-				<div class="product_item">
-					<figure>
-						<img src="{{asset('/')}}images/stories-img-3.jpg" alt="case studies">
-					</figure>
-					<div class="item_body">
-						<h4>New sustainable logistics headquar ters Rhenus in tilburg optimally secured - Nederland</h4>
-						<div class="read-more-link text-start">
-							<a href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="product_slide">
-				<div class="product_item">
-					<figure>
-						<img src="{{asset('/')}}images/stories-img-2.jpg" alt="case studies">
-					</figure>
-					<div class="item_body">
-						<h4>New sustainable logistics headquar ters Rhenus in tilburg optimally secured - Nederland</h4>
-						<div class="read-more-link text-start">
-							<a href="#">Read More</a>
-						</div>
-					</div>
-				</div>
-			</div>
+			@endforeach
+		@endif			
 		</div>
 	</div>
 </section>
@@ -372,66 +162,52 @@
 <section class="newsroom_sec sec_padd ">
 	<div class="container">
 		<div class="head_cmn text-center">
-			<h2 class="head_2">NEWSROOM</h2>
+			<h2 class="head_2">{{$sixth_sec_content->title}}</h2>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-12">
+			@if($newsrooms->isNotEmpty())
+            	@foreach($newsrooms as $i=>$newsroom)
+					@if ($loop->iteration == 2)
+						@break
+					@endif
 				<div class="news_block">
 					<div class="news_thumbnail new_left">
 						<figure>
-							<img src="{{asset('/')}}images/newsroom1.jpg"/>
+							<img src="{{asset(isset($newsroom->image) ? 'images/'.$newsroom->image : 'images/computerbanner.jpg')}}"/>
 						</figure>
 						<div class="news-content">
-							<h4>Lorem ipsum dolor sit amet, conse tetur sadipscing elitr, sed diam non umy eirmod tempor invidunt ut</h4>
-							<a href="#" class="btn read_more">Know More</a>
+							<h4>{{$newsroom->title}}</h4>
+							<a href="{{ url('newsRoomDetail/'.$newsroom->slug) }}" class="btn read_more">Know More</a>
 						</div>
 					</div>
 				</div>
+				@endforeach
+			@endif
 			</div>
 
 			<div class="col-md-6 col-12">
 				<div class="news_right row">
-					<div class="col-md-12">
-						<div class="news_block">
-							<div class="news_thumbnail_list news_right">
-								<figure>
-									<img src="{{asset('/')}}images/newroom-2.jpg"/>
-								</figure>
-								<div class="news-content">
-									<h4>Lorem ipsum dolor sit amet, conse tetur sadipscing elitr, sed diam non umy eirmod tempor invidunt ut</h4>
-									<a href="#" class="btn read_more">Know More</a>
+				@if($newsrooms->isNotEmpty())
+            		@foreach($newsrooms as $i=>$newsroom)
+						@if ($loop->first)
+							@continue
+						@endif
+						<div class="col-md-12">
+							<div class="news_block">
+								<div class="news_thumbnail_list news_right">
+									<figure>
+										<img src="{{asset(isset($newsroom->image) ? 'images/'.$newsroom->image : 'images/computerbanner.jpg')}}"/>
+									</figure>
+									<div class="news-content">
+										<h4>{{$newsroom->title}}</h4>
+										<a href="{{ url('newsRoomDetail/'.$newsroom->slug) }}" class="btn read_more">Know More</a>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="col-md-12">
-						<div class="news_block">
-							<div class="news_thumbnail_list news_right">
-								<figure>
-									<img src="{{asset('/')}}images/newroom-3.jpg"/>
-								</figure>
-								<div class="news-content">
-									<h4>Lorem ipsum dolor sit amet, conse tetur sadipscing elitr, sed diam non umy eirmod tempor invidunt ut</h4>
-									<a href="#" class="btn read_more">Know More</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-12">
-						<div class="news_block">
-							<div class="news_thumbnail_list news_right">
-								<figure>
-									<img src="{{asset('/')}}images/newroom-4.jpg"/>
-								</figure>
-								<div class="news-content">
-									<h4>Lorem ipsum dolor sit amet, conse tetur sadipscing elitr, sed diam non umy eirmod tempor invidunt ut</h4>
-									<a href="#" class="btn read_more">Know More</a>
-								</div>
-							</div>
-						</div>
-					</div>
+					@endforeach
+				@endif					
 				</div>
 			</div>
 		</div>

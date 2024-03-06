@@ -9,7 +9,9 @@ use App\ProductImages;
 use App\ProductVideos;
 use App\Industries;
 use App\ProductSpecifications;
+use App\ProductOtherSpecification;
 use App\ProductBlog;
+use App\ProductVariant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -39,30 +41,30 @@ class ProductController extends Controller
     }
     public function store(Request $request) {
 
-
         //print_r(array_filter( $request->specifications));
         //die;
-        $request->merge([
-            'specifications' => !empty($request->specifications) ? array_filter($request->specifications) : $request->specifications,
-            'specificationsvalue' => !empty($request->specificationsvalue) ? array_filter($request->specificationsvalue) : $request->specificationsvalue,            
-            'resources' => !empty($request->resources) ? array_filter($request->resources) : $request->resources,
-            'resourcesvalue' => !empty($request->resourcesvalue) ? array_filter($request->resourcesvalue) : $request->resourcesvalue ,
-            'accessories' => !empty($request->accessories) ? array_filter($request->accessories) : $request->accessories,
-            'accessoriesvalue' => !empty($request->accessoriesvalue) ? array_filter($request->accessoriesvalue) : $request->accessoriesvalue,
+        // $request->merge([
+        //     'specifications' => !empty($request->specifications) ? array_filter($request->specifications) : $request->specifications,
+        //     'specificationsvalue' => !empty($request->specificationsvalue) ? array_filter($request->specificationsvalue) : $request->specificationsvalue,            
+        //     'resources' => !empty($request->resources) ? array_filter($request->resources) : $request->resources,
+        //     'resourcesvalue' => !empty($request->resourcesvalue) ? array_filter($request->resourcesvalue) : $request->resourcesvalue ,
+        //     'accessories' => !empty($request->accessories) ? array_filter($request->accessories) : $request->accessories,
+        //     'accessoriesvalue' => !empty($request->accessoriesvalue) ? array_filter($request->accessoriesvalue) : $request->accessoriesvalue,
             
-        ]);
+        // ]);
         //dd($request->all());
         $messages = array(
-            'images.required' => 'Atleast 1 image required',
-            'specifications.required' => 'specification can not be empty',
+            // 'images.required' => 'Atleast 1 image required',
+            // 'specifications.required' => 'specification can not be empty',
         );
+        
         $validated = $request->validate([
             'title' => 'required|max:255',
             'short_description' => 'required',
-            'key_features' => 'required',
-            'description' => 'required',
-            'categories' => 'required|array|min:1',
-            'images' => 'required|array|min:1',           
+            //'key_features' => 'required',
+            //'description' => 'required',
+            //'categories' => 'required|array|min:1',
+            //'images' => 'required|array|min:1',           
             //'specifications' => 'required|array|min:1',           
         ],$messages);   
 
@@ -75,6 +77,13 @@ class ProductController extends Controller
             $product = new Product(); 
             $product->slug = str_slug($request->title);
         }
+
+        if($request->file('featuredimage')){
+            $fileName   =   time() . uniqid() . '.' . $request->file('featuredimage')->getClientOriginalExtension();
+            $res        =   $request->file('featuredimage')->move(public_path() . '/images/' , $fileName);
+            $product->featured_image = $fileName;
+        }
+
         $product->title = $request->title;
         $product->meta_title = $request->meta_title;
         $product->meta_keywords = $request->meta_keywords;
@@ -82,13 +91,13 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->short_description = $request->short_description;
         $product->key_features = $request->key_features;
-        $product->spec_sheet = $request->specesheetvalue;
+        $product->spec_sheet = $request->specesheetvalue;        
         $product->save();
         if(!empty($request->id)){
             $product->product_categories()->detach($request->categories);
         }
         $product->product_categories()->attach($request->categories);
-
+        
         if(!empty($request->id)){
             $product->industries()->detach($request->industries);
         }
@@ -215,6 +224,43 @@ class ProductController extends Controller
                         'updated_at' => date('Y-m-d H:i:s'),
                     ];
                     ProductBlog::create($insertblogs); 
+                }
+                    
+            }
+                    
+        }
+        if(!empty($request->variant)){
+            ProductVariant::where('product_id',$request->id)->delete();
+        }
+        if(!empty($request->variant)){
+            foreach ($request->variant as $key => $v) {
+                if(!empty($v)){
+                    $insertVariant = [
+                        'product_id' => $product->id,
+                        'variant' => $v,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s'),
+                    ];
+                    ProductVariant::create($insertVariant); 
+                }
+                    
+            }
+                    
+        }
+        if(!empty($request->specification_title)){
+            ProductOtherSpecification::where('product_id',$request->id)->delete();
+        }
+        if(!empty($request->specification_title)){
+            foreach ($request->specification_title as $key => $value) {
+                if(!empty($value)){
+                    $insertspecf = [
+                        'product_id' => $product->id,
+                        'title' => isset($request->specification_title[$key]) ? $request->specification_title[$key]:'',
+                        'description' => isset($request->specification_description[$key]) ? $request->specification_description[$key]:'',
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s'),
+                    ];
+                    ProductOtherSpecification::create($insertspecf); 
                 }
                     
             }
