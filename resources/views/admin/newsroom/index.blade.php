@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="pagetitle">
-      <h1>Newsrooms</h1>
+      <h1>Newsroom</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-          <li class="breadcrumb-item active">Newsrooms</li>
+          <li class="breadcrumb-item active">Newsroom</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -28,7 +28,7 @@
                   
                   <h5 class="card-title ">Newsrooms</h5>
                   <div>
-                  <a href="{{route('newsroom.create')}}" class="btn btn-primary  "><i class="bi bi-plus"></i> Add newsroom</a>
+                  <a href="{{route('newsroom.create')}}" class="btn btn-primary  "><i class="bi bi-plus"></i> Add Newsroom</a>
                   </div>
               
                 </div>
@@ -48,7 +48,7 @@
                   @if($newsrooms->isNotEmpty())
                     @foreach($newsrooms as $i=>$nr)
                       <tr>
-                        <th scope="row">{{$nr->id}}</th>
+                        <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$nr->title}}</td>                        
                         <td>
                           <button title="delete" type="button" class="btn btn-danger btn-sm deletebtn" data-id="{{$nr->id}}"><i class="bi bi-trash"></i></button>

@@ -16,7 +16,7 @@ class Casestudy extends Model
     
     protected $table = 'case_study';
     public $timestamps = false;
-    protected $fillable = ['name','filename','video'];
+    protected $fillable = ['id', 'title','client_name','project_year','project_type', 'slug', 'short_description', 'image', 'content'];
     protected $searchable = [
         
     ];

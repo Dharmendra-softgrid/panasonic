@@ -11,7 +11,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-
+/*
+|--------------------------------------------------------------------------
+| NewsroomController
+|--------------------------------------------------------------------------
+| Author : Dharmendra Upadhyay
+| Last Commited :28/02/2024
+| Controller for creating, updating, fetching, and deleting data news and blogs for the application..
+|
+*/
 class NewsroomController extends Controller
 {
     public function index() {
@@ -93,6 +101,7 @@ class NewsroomController extends Controller
         $newsroom->meta_keywords = $request->meta_keywords;
         $newsroom->meta_description = $request->meta_description;
         $newsroom->content = $request->content;
+        $newsroom->publisher = $request->publisher;
         $newsroom->short_description = $request->short_description;
         $newsroom->save();
         

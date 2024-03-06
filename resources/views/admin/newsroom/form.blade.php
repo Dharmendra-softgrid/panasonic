@@ -73,6 +73,12 @@
                 @endif
               </div>
             </div>
+              <div class="row mb-3">
+                  <label for="inputText" class="col-md-2 col-form-label">Publisher</label>
+                  <div class="col-md-10">                    
+                   <input type="text" name="publisher" class="form-control" value="{{old('publisher',isset($newsroom->publisher) ? $newsroom->publisher : '')  }}">                    
+                  </div>
+                </div>
                 <div class="row mb-3">
                   <label for="inputText" class="col-md-2 col-form-label">Content</label>
                   <div class="col-md-10">

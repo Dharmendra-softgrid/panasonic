@@ -14,8 +14,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-          <li class="breadcrumb-item active">Header</li>
-          <li class="breadcrumb-item active">Menu</li>
+          <li class="breadcrumb-item active">Solution Menu</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -119,6 +118,19 @@
                                   
                                 </td>
                               </tr>
+                              @if($nc->children->isNotEmpty())
+                                @foreach($nc->children as $i=>$ncs)
+                                    <tr>
+                                      <td><span class="indent"></span> <span class="indent"></span><span class="indent"></span>{{$ncs->title}}</td>                        
+                                      <td>
+                                        <button title="delete" type="button" class="btn btn-danger btn-sm deletebtn" data-id="{{$ncs->id}}"><i class="bi bi-trash"></i></button>
+
+                                        <a title="edit" href="{{route('admin.header.menu.edit',['id'=>$ncs->id])}}" class="btn btn-primary btn-sm " data-id="{{$ncs->id}}"><i class="bi bi-pencil"></i></a>
+                                        
+                                      </td>
+                                    </tr>
+                                  @endforeach
+                              @endif
                             @endforeach
                         @endif
                       @endforeach

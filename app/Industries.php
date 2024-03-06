@@ -14,7 +14,7 @@ class Industries extends Model
     
     protected $table = 'industries';
 
-    protected $fillable = ['title','meta_title','meta_keywords','meta_description','content'];
+    protected $fillable = ['title','meta_title','meta_keywords','meta_description','content','slug'];
     /**
      * GET product images
      */
@@ -32,9 +32,7 @@ class Industries extends Model
         return parent::newQuery($excludeDeleted)
             ->where("active", '=', 1);
     }
-    
-
-    
-    
-    
+    public function IndustryBlog() {
+      return $this->hasMany(IndustryBlog::class,'industry_id');
+    } 
 }

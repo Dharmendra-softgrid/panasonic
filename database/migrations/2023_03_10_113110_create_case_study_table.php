@@ -15,9 +15,20 @@ class CreateCaseStudyTable extends Migration
     {
         Schema::create('case_study', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('filename')->nullable();
-            $table->string('video')->nullable();
+            $table->string('title',255);
+            $table->string('slug',255);
+            $table->string('client_name',255);
+            $table->string('project_year',255);
+            $table->string('project_type',255);
+            $table->text('meta_title')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('short_description');
+            $table->string('image',255);
+            $table->longText('content'); 
+            $table->tinyInteger('active');            
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

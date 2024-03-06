@@ -15,6 +15,9 @@
       height: 200px;
       object-fit: cover;
     }
+    #bannerimagepreview{
+      height: 100px;
+    }
   </style>
 @endsection
 
@@ -116,14 +119,14 @@
                   @endif
                   </div>
                 </div>
-                 <div class="row mb-3">
+                <!-- <div class="row mb-3">
                   <label for="inputEmail3" class="col-sm-2 col-form-label">Youtube video</label>
                   <div class="col-sm-10">               
                     @include('admin.shared.addvideo',['videos'=>(isset($industry) && $industry->videos->isNotEmpty()) ? $industry->videos : ''])
                   </div>
-                </div>
+                </div> -->
                 <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">Banner Image <br> <small style="font-size;11px;">(1920x640)</small></label>
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Image <br> <!--<small style="font-size;11px;">(1920x640)</small>--></label>
                   <div class="col-sm-10">
                     <div class="card ">
                        
@@ -239,7 +242,7 @@
         if(sizeKB > 2048){
           $('.msg').html('<div class="text-danger">The banner image may not be greater than 2048 kilobytes</div>');
           return;
-        }else if (!file.name.match(/\.(jpg|jpeg|png|gif)$/) ){
+        }else if (!file.name.match(/\.(jpg|jpeg|png|gif|svg)$/) ){
           $('.msg').html('<div class="text-danger">The banner image must be a file of type: jpeg, png, jpg, gif.</div>');
           return;
         }else{
